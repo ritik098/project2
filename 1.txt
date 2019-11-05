@@ -1,0 +1,18 @@
+DECLARE
+n1 number(3);
+n2 number(3);
+ex exception;
+
+BEGIN
+n1:=:n1;
+n2:=:n2;
+if(n2=0) then
+raise ex;
+end if;
+dbms_output.put_line('division is:' || to_number(n1/n2));
+
+EXCEPTION
+WHEN ex then
+raise_application_error(-20001, 'n2 cannot be zero');
+
+END;
